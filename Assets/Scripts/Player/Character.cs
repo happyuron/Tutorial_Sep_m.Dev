@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+namespace mDEV.Characters
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Character : MonoBehaviour
     {
-        
-    }
+        public int maxMp { get; private set; }
+        public int curMp;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+
+
     }
 }
