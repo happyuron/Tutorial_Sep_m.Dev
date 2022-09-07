@@ -7,19 +7,32 @@ namespace mDEV.Manager
 {
     public class GameManager : Singleton<GameManager>
     {
+        private int playerIndex;
+
+        [SerializeField] public int recoverMp;
+
         public Character[] players;
 
-        public Character curPlayingCharacter { get; private set; }
+        [field: SerializeField] public Character curPlayingCharacter { get; private set; }
 
         private void Start()
         {
             players = FindObjectsOfType<Character>();
-            curPlayingCharacter = players[Random.Range(0, players.Length)];
+            playerIndex = Random.Range(0, players.Length);
+            curPlayingCharacter = players[playerIndex];
         }
 
-        public void ChangeTurn()
+        public void ChangeTurn(Character ordered)
         {
-
+            if (ordered == curPlayingCharacter)
+            {
+                curPlayingCharacter.isPlaying = false;
+                curPlayingCharacter.EndTurn();
+                playerIndex = playerIndex >= players.Length - 1 ? 0 : 1 + playerIndex;
+                curPlayingCharacter = players[playerIndex];
+                curPlayingCharacter.isPlaying = true;
+                curPlayingCharacter.StartTurn(recoverMp);
+            }
         }
 
     }

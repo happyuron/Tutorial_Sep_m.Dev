@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace mDEV.Characters
+namespace mDEV.Card
 {
-    public class Player : Character
+    public class Card : MonoBehaviour
     {
+        public int cost;
+
 
     }
 }
