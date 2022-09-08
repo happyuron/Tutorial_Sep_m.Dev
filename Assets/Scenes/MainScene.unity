@@ -392,6 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recoverMp: 3
   players: []
+  <curPlayingCharacter>k__BackingField: {fileID: 0}
 --- !u!4 &908885245
 Transform:
   m_ObjectHideFlags: 0
@@ -505,6 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaying: 0
+  <maxMp>k__BackingField: 10
   curMp: 0
 --- !u!1 &1388177637
 GameObject:
@@ -671,6 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaying: 0
+  <maxMp>k__BackingField: 10
   curMp: 0
 --- !u!1 &1693379120
 GameObject:
@@ -854,6 +857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaying: 0
+  <maxMp>k__BackingField: 10
   curMp: 0
 --- !u!1 &1834078987
 GameObject:
@@ -1020,6 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaying: 0
+  <maxMp>k__BackingField: 10
   curMp: 0
 --- !u!212 &2120749938
 SpriteRenderer:

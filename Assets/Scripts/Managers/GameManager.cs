@@ -20,6 +20,7 @@ namespace mDEV.Manager
             players = FindObjectsOfType<Character>();
             playerIndex = Random.Range(0, players.Length);
             curPlayingCharacter = players[playerIndex];
+            curPlayingCharacter.StartTurn(recoverMp);
         }
 
         public void ChangeTurn(Character ordered)

@@ -8,7 +8,7 @@ namespace mDEV.Characters
     public class Character : MonoBehaviour
     {
         public bool isPlaying;
-        public int maxMp { get; private set; }
+        [field: SerializeField] public int maxMp { get; private set; }
         public int curMp;
 
         protected virtual void Start()
