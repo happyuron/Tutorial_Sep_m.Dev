@@ -33,6 +33,11 @@ namespace mDEV.Characters
 
         }
 
+        public void Dead()
+        {
+
+        }
+
 
 
     }

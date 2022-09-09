@@ -26,8 +26,8 @@ namespace mDEV.Extensions
                 value = tmp2;
             }
             value = tmp;
-
             return value;
+
         }
     }
 }

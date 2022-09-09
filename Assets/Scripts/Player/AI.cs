@@ -10,8 +10,14 @@ namespace mDEV.Characters
         public override void StartTurn(int recoverMp)
         {
             base.StartTurn(recoverMp);
-            ChangeTurn();
+            StartCoroutine(WaitASecond());
             Debug.Log("AI turn" + gameObject.name);
+        }
+
+        private IEnumerator WaitASecond()
+        {
+            yield return new WaitForSeconds(1);
+            ChangeTurn();
         }
     }
 }

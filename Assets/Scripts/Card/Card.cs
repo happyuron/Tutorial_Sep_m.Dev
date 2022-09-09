@@ -8,6 +8,7 @@ namespace mDEV.Card
     {
         public int cost;
 
+        public CardInfo cardInfo;
 
     }
 }
