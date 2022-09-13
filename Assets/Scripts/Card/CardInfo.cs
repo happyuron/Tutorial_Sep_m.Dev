@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace mDEV.Card
+namespace mDEV.Cards
 {
     [CreateAssetMenu(menuName = "Card", fileName = "Card")]
     public class CardInfo : ScriptableObject

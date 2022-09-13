@@ -15,6 +15,8 @@ namespace mDEV.Manager
 
         [field: SerializeField] public int MaxScore { get; private set; }
 
+        [field: SerializeField] public int cardMaxCount { get; private set; }
+
         public int Score { get; private set; }
 
 
