@@ -14,5 +14,10 @@ namespace mDEV.Characters
         {
             cards = new Card[GameManager.Instance.cardMaxCount];
         }
+
+        private void Start()
+        {
+
+        }
     }
 }

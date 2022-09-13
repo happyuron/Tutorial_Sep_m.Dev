@@ -29,5 +29,27 @@ namespace mDEV.Extensions
             return value;
 
         }
+        public static T[] Remove<T>(this T[] value, T target) where T : MonoBehaviour
+        {
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (value[i] == target)
+                {
+                    for (int j = i; j < value.Length - 1; j++)
+                    {
+                        value[j] = value[j + 1];
+                    }
+                    T[] tmp2 = new T[value.Length - 1];
+                    for (int j = 0; j < tmp2.Length; j++)
+                    {
+                        tmp2[j] = value[j];
+                    }
+                    value = tmp2;
+                    break;
+                }
+            }
+
+            return value;
+        }
     }
 }

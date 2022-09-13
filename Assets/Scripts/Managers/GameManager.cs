@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using mDEV.Characters;
 using TMPro;
+using mDEV.Extensions;
+
 namespace mDEV.Manager
 {
     public class GameManager : Singleton<GameManager>
@@ -11,7 +13,7 @@ namespace mDEV.Manager
 
         [SerializeField] public int recoverMp;
 
-        public Character[] Players { get; private set; }
+        [field: SerializeField] public Character[] Players { get; private set; }
 
         [field: SerializeField] public int MaxScore { get; private set; }
 
@@ -38,7 +40,6 @@ namespace mDEV.Manager
         {
             if (ordered == curPlayingCharacter)
             {
-                curPlayingCharacter.isPlaying = false;
                 curPlayingCharacter.EndTurn();
                 playerIndex = playerIndex >= Players.Length - 1 ? 0 : 1 + playerIndex;
                 curPlayingCharacter = Players[playerIndex];
@@ -51,12 +52,12 @@ namespace mDEV.Manager
         public void UpdateScore(int value)
         {
             Score += value;
-            scoreText.text = Score.ToString();
             if (Score >= MaxScore)
             {
                 curPlayingCharacter.Dead();
                 Score = 0;
             }
+            scoreText.text = Score.ToString();
         }
 
         public void UpdateScore()
@@ -64,6 +65,10 @@ namespace mDEV.Manager
             scoreText.text = Score.ToString();
         }
 
+        public void RemoveCharacter(Character target)
+        {
+            Players = Players.Remove(target);
+        }
 
 
     }

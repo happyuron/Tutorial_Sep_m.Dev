@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using mDEV.Manager;
+using mDEV.Extensions;
 
 namespace mDEV.Characters
 {
     public class Character : MonoBehaviour
     {
-        public bool isPlaying;
-        [field: SerializeField] public int maxMp { get; private set; }
+        public int maxMp { get; private set; }
         public int curMp;
+
+        public bool isPlaying;
 
         protected virtual void Start()
         {
@@ -30,14 +32,14 @@ namespace mDEV.Characters
 
         public virtual void EndTurn()
         {
-
+            isPlaying = false;
         }
 
         public void Dead()
         {
+            GameManager.Instance.RemoveCharacter(this);
 
         }
-
 
 
     }
