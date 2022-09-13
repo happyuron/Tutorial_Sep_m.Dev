@@ -11,13 +11,13 @@ namespace mDEV.Manager
     {
         private int playerIndex;
 
+        public GameObject CardResource { get; private set; }
+
         [SerializeField] public int recoverMp;
 
         [field: SerializeField] public Character[] Players { get; private set; }
 
         [field: SerializeField] public int MaxScore { get; private set; }
-
-        [field: SerializeField] public int cardMaxCount { get; private set; }
 
         public int Score { get; private set; }
 
@@ -26,6 +26,12 @@ namespace mDEV.Manager
         public TextMeshProUGUI scoreText;
 
         [field: SerializeField] public Character curPlayingCharacter { get; private set; }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            CardResource = Resources.Load<GameObject>("Prefebs/Card");
+        }
 
         private void Start()
         {

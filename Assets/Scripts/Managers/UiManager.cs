@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using mDEV.Cards;
 
-namespace mDEV
+namespace mDEV.Manager
 {
-    public class UiManager : MonoBehaviour
+    public class UiManager : Singleton<UiManager>
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        [SerializeField] private GameObject parentGameObject;
 
-        // Update is called once per frame
-        void Update()
+        public void MakeCardUi(Card[] list)
         {
-        
+            for (int i = 0; i < list.Length; i++)
+            {
+                Card tmp = Instantiate(GameManager.Instance.CardResource).GetComponent<Card>();
+                //tmp.transform.parent = parentGameObject.transform;
+            }
         }
     }
 }

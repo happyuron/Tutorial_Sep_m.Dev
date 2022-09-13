@@ -12,7 +12,7 @@ namespace mDEV.Characters
 
         private void Awake()
         {
-            cards = new Card[GameManager.Instance.cardMaxCount];
+            cards = DataManager.Instance.cardList;
         }
 
         private void Start()
