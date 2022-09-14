@@ -33,6 +33,7 @@ namespace mDEV.Manager
             CardResource = Resources.Load<GameObject>("Prefebs/Card");
         }
 
+
         private void Start()
         {
             Players = FindObjectsOfType<Character>();
