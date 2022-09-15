@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1fb21a13b711447b9b78f0593bcfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 5
   cardInfo: {fileID: 0}
   rectTr: {fileID: 0}
 --- !u!1 &456636122
@@ -538,6 +538,7 @@ MonoBehaviour:
   - {fileID: 1480589050}
   - {fileID: 616785218}
   - {fileID: 456636123}
+  - {fileID: 2013072588}
 --- !u!4 &849465113
 Transform:
   m_ObjectHideFlags: 0
@@ -554,6 +555,7 @@ Transform:
   - {fileID: 1480589051}
   - {fileID: 616785219}
   - {fileID: 456636124}
+  - {fileID: 2013072589}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -590,10 +592,10 @@ RectTransform:
   m_Father: {fileID: 418510172}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -442}
-  m_SizeDelta: {x: 460, y: 130}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 98}
+  m_SizeDelta: {x: -1460, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &892046654
 MonoBehaviour:
@@ -677,6 +679,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 923109a3f8fa99044943746eaeec6d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raycaster:
+  - {fileID: 418510169}
 --- !u!1 &908885243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +1056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1fb21a13b711447b9b78f0593bcfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 3
   cardInfo: {fileID: 0}
   rectTr: {fileID: 0}
 --- !u!4 &1480589051
@@ -1387,10 +1391,10 @@ RectTransform:
   m_Father: {fileID: 418510172}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 830, y: -149}
-  m_SizeDelta: {x: 98.9865, y: 30}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -130, y: -149}
+  m_SizeDelta: {x: 98.98645, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1834078989
 MonoBehaviour:
@@ -1486,6 +1490,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834078987}
   m_CullTransparentMesh: 1
+--- !u!1 &2013072587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2013072589}
+  - component: {fileID: 2013072588}
+  m_Layer: 0
+  m_Name: Card (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2013072588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013072587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1fb21a13b711447b9b78f0593bcfcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  cardInfo: {fileID: 0}
+  rectTr: {fileID: 0}
+--- !u!4 &2013072589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013072587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 849465113}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2077052644
 GameObject:
   m_ObjectHideFlags: 0

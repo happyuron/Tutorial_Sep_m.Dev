@@ -1,29 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using mDEV.Manager;
+using mDEV.Cards;
 
-namespace mDEV.Cards
+namespace mDEV.Ui
 {
-    public class Card : MonoBehaviour
+    public class CardUi : MonoBehaviour
     {
-        public int cost;
-
-        public CardInfo cardInfo;
-
         public RectTransform rectTr;
 
         private Vector3 defaultPos;
 
-
-        protected virtual void Awake()
+        public Card card;
+        private void Awake()
         {
             rectTr = GetComponent<RectTransform>();
         }
 
-        public virtual void Effect()
+        public void SetDafaultPos(Vector3 newPos)
         {
-
+            defaultPos = newPos;
         }
+
     }
 }

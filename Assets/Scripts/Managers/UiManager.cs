@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using mDEV.Cards;
+using mDEV.Ui;
 
 namespace mDEV.Manager
 {
@@ -19,10 +20,11 @@ namespace mDEV.Manager
         {
             for (int i = 0; i < list.Length; i++)
             {
-                Card tmp = Instantiate(GameManager.Instance.CardResource).GetComponent<Card>();
+                CardUi tmp = Instantiate(GameManager.Instance.CardResource).GetComponent<CardUi>();
                 tmp.transform.SetParent(parentGameObject.transform);
                 CalRectWide(parentGameObject, tmp.rectTr, i, list.Length);
                 tmp.SetDafaultPos(tmp.rectTr.localPosition);
+                tmp.card = list[i];
             }
         }
 
