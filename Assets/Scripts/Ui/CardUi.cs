@@ -9,7 +9,7 @@ namespace mDEV.Ui
     {
         public RectTransform rectTr;
 
-        private Vector3 defaultPos;
+        public Vector3 DefaultPos { get; private set; }
 
         public Card card;
         private void Awake()
@@ -19,7 +19,7 @@ namespace mDEV.Ui
 
         public void SetDafaultPos(Vector3 newPos)
         {
-            defaultPos = newPos;
+            DefaultPos = newPos;
         }
 
     }

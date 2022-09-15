@@ -1,17 +1,26 @@
 {
-    "name": "PlayerInput",
+    "name": "UiClick",
     "maps": [
         {
             "name": "Player",
             "id": "01d393be-222a-4315-8002-0626316d8e6c",
             "actions": [
                 {
-                    "name": "UiLButton",
+                    "name": "UiLButtonDown",
                     "type": "Button",
                     "id": "84fb2a59-63f1-4d90-9238-6521b6d5940b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UiLButtonUp",
+                    "type": "Button",
+                    "id": "e9f3a5c4-3364-4bea-8c76-bdc5506bbc80",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
                     "initialStateCheck": false
                 }
             ],
@@ -23,18 +32,18 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "UiLButton",
+                    "action": "UiLButtonDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "6f2f7ced-c3b6-47e9-af5d-708ef13b078e",
+                    "id": "ecd70ebc-4d2e-48f6-a73f-b20a19d06547",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UiLButton",
+                    "action": "UiLButtonUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

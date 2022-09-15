@@ -14,34 +14,54 @@ namespace mDEV.Manager
 
         public GraphicRaycaster[] raycaster;
 
+        private PointerEventData data;
+
+        private CardUi clickedCard;
+
+        private bool LButtonClick;
         private void Start()
         {
-             public InputSystem buttonDown;
-    }
+            data = new PointerEventData(null);
+        }
 
-    public void UiLButtonDown()
-    {
-        PointerEventData data = new PointerEventData(null);
-        data.position = Input.mousePosition;
-        List<RaycastResult> results = new List<RaycastResult>();
-        for (int i = 0; i < raycaster.Length; i++)
+        public void UiLButtonDown(InputAction.CallbackContext txt)
         {
-            raycaster[i].Raycast(data, results);
-            if (results.Count > 0)
+            data.position = Input.mousePosition;
+            List<RaycastResult> results = new List<RaycastResult>();
+            for (int i = 0; i < raycaster.Length; i++)
             {
-                if (results[0].gameObject.GetComponent<CardUi>())
+                raycaster[i].Raycast(data, results);
+                if (results.Count > 0)
                 {
-                    CardUi tmp = results[0].gameObject.GetComponent<CardUi>();
-                    tmp.transform.position = data.position;
+                    if (results[0].gameObject.GetComponent<CardUi>())
+                    {
+                        LButtonClick = true;
+                        CardUi tmp = results[0].gameObject.GetComponent<CardUi>();
+                        tmp.transform.position = data.position;
+                        clickedCard = tmp;
+                    }
+                    break;
                 }
-                break;
             }
         }
-    }
 
-    private void Update()
-    {
-        UiLButtonDown();
+        public void UiLButtonUp(InputAction.CallbackContext txt)
+        {
+            LButtonClick = false;
+            clickedCard.transform.position = clickedCard.DefaultPos;
+        }
+
+        public void UiLButton()
+        {
+            data.position = Input.mousePosition;
+            clickedCard.transform.position = data.position;
+        }
+
+
+        private void Update()
+        {
+            // if (LButtonClick)
+            //     UiLButton();
+        }
     }
-}
 }

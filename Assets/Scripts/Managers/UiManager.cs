@@ -23,7 +23,7 @@ namespace mDEV.Manager
                 CardUi tmp = Instantiate(GameManager.Instance.CardResource).GetComponent<CardUi>();
                 tmp.transform.SetParent(parentGameObject.transform);
                 CalRectWide(parentGameObject, tmp.rectTr, i, list.Length);
-                tmp.SetDafaultPos(tmp.rectTr.localPosition);
+                tmp.SetDafaultPos(tmp.rectTr.position);
                 tmp.card = list[i];
             }
         }
