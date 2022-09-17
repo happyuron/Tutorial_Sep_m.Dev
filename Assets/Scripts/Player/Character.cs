@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using mDEV.Manager;
 using mDEV.Extensions;
+using mDEV.Cards;
 
 namespace mDEV.Characters
 {
     public class Character : MonoBehaviour
     {
+        public Card[] myCards;
         public int maxMp { get; private set; }
         public int curMp;
 
@@ -15,9 +17,10 @@ namespace mDEV.Characters
 
         protected virtual void Start()
         {
+            maxMp = GameManager.Instance.MaxMP;
             curMp = maxMp;
-        }
 
+        }
         public void ChangeTurn()
         {
             GameManager.Instance.ChangeTurn(this);
@@ -28,6 +31,7 @@ namespace mDEV.Characters
             curMp += recoverMp;
             if (maxMp < curMp)
                 curMp = maxMp;
+
         }
 
         public virtual void EndTurn()

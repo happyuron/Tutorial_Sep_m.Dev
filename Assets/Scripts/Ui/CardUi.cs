@@ -22,5 +22,21 @@ namespace mDEV.Ui
             DefaultPos = newPos;
         }
 
+        public void SetPos(Vector3 pos)
+        {
+            transform.position = pos;
+        }
+
+        public void SetActive(bool value)
+        {
+            gameObject.SetActive(value);
+        }
+
+        public void ShowMyCard()
+        {
+            card.Effect();
+            SetActive(false);
+        }
+
     }
 }

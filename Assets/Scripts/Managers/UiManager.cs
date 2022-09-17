@@ -10,10 +10,13 @@ namespace mDEV.Manager
     {
         [SerializeField] private RectTransform parentGameObject;
 
+        public CardUi[] cardUis;
 
         private void Start()
         {
+            cardUis = new CardUi[DataManager.Instance.cardList.Length];
             MakeCardUi(DataManager.Instance.cardList);
+
         }
 
         public void MakeCardUi(Card[] list)
@@ -25,6 +28,7 @@ namespace mDEV.Manager
                 CalRectWide(parentGameObject, tmp.rectTr, i, list.Length);
                 tmp.SetDafaultPos(tmp.rectTr.position);
                 tmp.card = list[i];
+                cardUis[i] = tmp;
             }
         }
 
@@ -35,6 +39,14 @@ namespace mDEV.Manager
                 tr.rect.width / 2, 0);
 
             return tr.localPosition;
+        }
+
+        public void SetActiveCardUi()
+        {
+            for (int i = 0; i < cardUis.Length; i++)
+            {
+                cardUis[i].SetActive(true);
+            }
         }
     }
 }

@@ -33,17 +33,8 @@ public partial class @UiClick : IInputActionCollection2, IDisposable
                     ""id"": ""84fb2a59-63f1-4d90-9238-6521b6d5940b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""UiLButtonUp"",
-                    ""type"": ""Button"",
-                    ""id"": ""e9f3a5c4-3364-4bea-8c76-bdc5506bbc80"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""initialStateCheck"": false
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -51,21 +42,10 @@ public partial class @UiClick : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""6aee13b9-f1af-45b8-886d-d83ea0354b5c"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""UiLButtonDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ecd70ebc-4d2e-48f6-a73f-b20a19d06547"",
-                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""UiLButtonUp"",
+                    ""action"": ""UiLButtonDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -77,7 +57,6 @@ public partial class @UiClick : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_UiLButtonDown = m_Player.FindAction("UiLButtonDown", throwIfNotFound: true);
-        m_Player_UiLButtonUp = m_Player.FindAction("UiLButtonUp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -138,13 +117,11 @@ public partial class @UiClick : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_UiLButtonDown;
-    private readonly InputAction m_Player_UiLButtonUp;
     public struct PlayerActions
     {
         private @UiClick m_Wrapper;
         public PlayerActions(@UiClick wrapper) { m_Wrapper = wrapper; }
         public InputAction @UiLButtonDown => m_Wrapper.m_Player_UiLButtonDown;
-        public InputAction @UiLButtonUp => m_Wrapper.m_Player_UiLButtonUp;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -157,9 +134,6 @@ public partial class @UiClick : IInputActionCollection2, IDisposable
                 @UiLButtonDown.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUiLButtonDown;
                 @UiLButtonDown.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUiLButtonDown;
                 @UiLButtonDown.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUiLButtonDown;
-                @UiLButtonUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUiLButtonUp;
-                @UiLButtonUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUiLButtonUp;
-                @UiLButtonUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUiLButtonUp;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -167,9 +141,6 @@ public partial class @UiClick : IInputActionCollection2, IDisposable
                 @UiLButtonDown.started += instance.OnUiLButtonDown;
                 @UiLButtonDown.performed += instance.OnUiLButtonDown;
                 @UiLButtonDown.canceled += instance.OnUiLButtonDown;
-                @UiLButtonUp.started += instance.OnUiLButtonUp;
-                @UiLButtonUp.performed += instance.OnUiLButtonUp;
-                @UiLButtonUp.canceled += instance.OnUiLButtonUp;
             }
         }
     }
@@ -177,6 +148,5 @@ public partial class @UiClick : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnUiLButtonDown(InputAction.CallbackContext context);
-        void OnUiLButtonUp(InputAction.CallbackContext context);
     }
 }

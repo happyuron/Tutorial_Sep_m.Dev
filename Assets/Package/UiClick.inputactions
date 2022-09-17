@@ -11,17 +11,8 @@
                     "id": "84fb2a59-63f1-4d90-9238-6521b6d5940b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "UiLButtonUp",
-                    "type": "Button",
-                    "id": "e9f3a5c4-3364-4bea-8c76-bdc5506bbc80",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
-                    "initialStateCheck": false
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -29,21 +20,10 @@
                     "name": "",
                     "id": "6aee13b9-f1af-45b8-886d-d83ea0354b5c",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UiLButtonDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ecd70ebc-4d2e-48f6-a73f-b20a19d06547",
-                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UiLButtonUp",
+                    "action": "UiLButtonDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

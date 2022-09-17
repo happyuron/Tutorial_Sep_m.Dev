@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using mDEV.Ui;
+using mDEV.Characters;
 
 
 namespace mDEV.Manager
@@ -26,29 +27,47 @@ namespace mDEV.Manager
 
         public void UiLButtonDown(InputAction.CallbackContext txt)
         {
-            data.position = Input.mousePosition;
-            List<RaycastResult> results = new List<RaycastResult>();
-            for (int i = 0; i < raycaster.Length; i++)
+            if (txt.control.IsPressed())
             {
-                raycaster[i].Raycast(data, results);
-                if (results.Count > 0)
+                data.position = Input.mousePosition;
+                List<RaycastResult> results = new List<RaycastResult>();
+                for (int i = 0; i < raycaster.Length; i++)
                 {
-                    if (results[0].gameObject.GetComponent<CardUi>())
+                    raycaster[i].Raycast(data, results);
+                    if (results.Count > 0)
                     {
-                        LButtonClick = true;
-                        CardUi tmp = results[0].gameObject.GetComponent<CardUi>();
-                        tmp.transform.position = data.position;
-                        clickedCard = tmp;
+                        if (results[0].gameObject.GetComponent<CardUi>())
+                        {
+                            LButtonClick = true;
+                            CardUi tmp = results[0].gameObject.GetComponent<CardUi>();
+                            tmp.SetPos(data.position);
+                            clickedCard = tmp;
+                        }
+                        break;
                     }
-                    break;
                 }
             }
-        }
-
-        public void UiLButtonUp(InputAction.CallbackContext txt)
-        {
-            LButtonClick = false;
-            clickedCard.transform.position = clickedCard.DefaultPos;
+            else
+            {
+                LButtonClick = false;
+                clickedCard.transform.position = clickedCard.DefaultPos;
+                data.position = Input.mousePosition;
+                List<RaycastResult> results = new List<RaycastResult>();
+                for (int i = 0; i < raycaster.Length; i++)
+                {
+                    raycaster[i].Raycast(data, results);
+                    if (results.Count > 0)
+                    {
+                        clickedCard.SetPos(clickedCard.DefaultPos);
+                        return;
+                    }
+                }
+                if (GameManager.Instance.curPlayingCharacter.GetComponent<Player>() &&
+                    clickedCard.card.owner.curMp >= clickedCard.card.cost)
+                    clickedCard.ShowMyCard();
+                else
+                    clickedCard.SetPos(clickedCard.DefaultPos);
+            }
         }
 
         public void UiLButton()
@@ -60,8 +79,8 @@ namespace mDEV.Manager
 
         private void Update()
         {
-            // if (LButtonClick)
-            //     UiLButton();
+            if (LButtonClick)
+                UiLButton();
         }
     }
 }

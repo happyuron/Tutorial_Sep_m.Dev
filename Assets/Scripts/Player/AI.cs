@@ -2,11 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace mDEV.Characters
 {
     public class AI : Character
     {
-
+        protected override void Start()
+        {
+            base.Start();
+            myCards = GetComponentsInChildren<Cards.Card>();
+            for (int i = 0; i < myCards.Length; i++)
+            {
+                myCards[i].owner = this;
+            }
+        }
         public override void StartTurn(int recoverMp)
         {
             base.StartTurn(recoverMp);
@@ -19,5 +28,7 @@ namespace mDEV.Characters
             yield return new WaitForSeconds(1);
             ChangeTurn();
         }
+
+
     }
 }

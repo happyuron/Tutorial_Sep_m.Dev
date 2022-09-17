@@ -408,6 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 5
+  owner: {fileID: 0}
   cardInfo: {fileID: 0}
   rectTr: {fileID: 0}
 --- !u!1 &456636122
@@ -440,6 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 0
+  owner: {fileID: 0}
   cardInfo: {fileID: 0}
   rectTr: {fileID: 0}
 --- !u!4 &456636124
@@ -487,6 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 0
+  owner: {fileID: 0}
   cardInfo: {fileID: 0}
   rectTr: {fileID: 0}
 --- !u!4 &616785219
@@ -723,10 +726,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 84fb2a59-63f1-4d90-9238-6521b6d5940b
     m_ActionName: Player/UiLButton[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e9f3a5c4-3364-4bea-8c76-bdc5506bbc80
-    m_ActionName: Player/UiLButtonUp[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -761,6 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ca534162af014408ce4ef3c69946c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <MaxMP>k__BackingField: 5
   recoverMp: 3
   <Players>k__BackingField: []
   <MaxScore>k__BackingField: 31
@@ -828,6 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentGameObject: {fileID: 892046652}
+  cardUis: []
 --- !u!1 &1161227429
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d93ba854803574a9452a1a429fa426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myCards: []
   curMp: 0
   isPlaying: 0
 --- !u!1 &1334949648
@@ -1117,6 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 3
+  owner: {fileID: 0}
   cardInfo: {fileID: 0}
   rectTr: {fileID: 0}
 --- !u!4 &1480589051
@@ -1231,6 +1234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d93ba854803574a9452a1a429fa426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myCards: []
   curMp: 0
   isPlaying: 0
 --- !u!1 &1693379120
@@ -1414,6 +1418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d93ba854803574a9452a1a429fa426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myCards: []
   curMp: 0
   isPlaying: 0
 --- !u!1 &1834078987
@@ -1580,6 +1585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 0
+  owner: {fileID: 0}
   cardInfo: {fileID: 0}
   rectTr: {fileID: 0}
 --- !u!4 &2013072589
@@ -1762,6 +1768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc26a0a405471e643aa2c35684f278c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myCards: []
   curMp: 0
   isPlaying: 0
 --- !u!4 &2120749939

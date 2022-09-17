@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using mDEV.Manager;
+using mDEV.Characters;
 
 namespace mDEV.Cards
 {
     public class Card : MonoBehaviour
     {
         public int cost;
+
+        public Character owner;
 
         public CardInfo cardInfo;
 
@@ -23,7 +26,8 @@ namespace mDEV.Cards
 
         public virtual void Effect()
         {
-
+            owner.curMp -= cost;
+            Debug.Log("Card");
         }
     }
 }

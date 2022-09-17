@@ -11,6 +11,8 @@ namespace mDEV.Manager
     {
         private int playerIndex;
 
+        [field: SerializeField] public int MaxMP { get; private set; }
+
         public GameObject CardResource { get; private set; }
 
         [SerializeField] public int recoverMp;
