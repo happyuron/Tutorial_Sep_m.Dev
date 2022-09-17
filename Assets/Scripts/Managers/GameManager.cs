@@ -45,6 +45,7 @@ namespace mDEV.Manager
             UpdateScore();
         }
 
+
         public void ChangeTurn(Character ordered)
         {
             if (ordered == curPlayingCharacter)
@@ -56,6 +57,13 @@ namespace mDEV.Manager
                 curPlayingCharacter.isPlaying = true;
                 curPlayingCharacter.StartTurn(recoverMp);
             }
+        }
+
+        public void ChangeTurnDead()
+        {
+            playerIndex = playerIndex >= Players.Length ? 0 : playerIndex;
+            curPlayingCharacter = Players[playerIndex];
+            UpdateScore(0);
         }
 
         public void UpdateScore(int value)

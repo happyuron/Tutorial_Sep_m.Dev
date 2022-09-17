@@ -50,23 +50,26 @@ namespace mDEV.Manager
             else
             {
                 LButtonClick = false;
-                clickedCard.transform.position = clickedCard.DefaultPos;
-                data.position = Input.mousePosition;
-                List<RaycastResult> results = new List<RaycastResult>();
-                for (int i = 0; i < raycaster.Length; i++)
+                if (clickedCard != null)
                 {
-                    raycaster[i].Raycast(data, results);
-                    if (results.Count > 0)
+                    clickedCard.transform.position = clickedCard.DefaultPos;
+                    data.position = Input.mousePosition;
+                    List<RaycastResult> results = new List<RaycastResult>();
+                    for (int i = 0; i < raycaster.Length; i++)
                     {
-                        clickedCard.SetPos(clickedCard.DefaultPos);
-                        return;
+                        raycaster[i].Raycast(data, results);
+                        if (results.Count > 0)
+                        {
+                            clickedCard.SetPos(clickedCard.DefaultPos);
+                            return;
+                        }
                     }
+                    if (GameManager.Instance.curPlayingCharacter.GetComponent<Player>() &&
+                        clickedCard.card.owner.curMp >= clickedCard.card.cost)
+                        clickedCard.ShowMyCard();
+                    else
+                        clickedCard.SetPos(clickedCard.DefaultPos);
                 }
-                if (GameManager.Instance.curPlayingCharacter.GetComponent<Player>() &&
-                    clickedCard.card.owner.curMp >= clickedCard.card.cost)
-                    clickedCard.ShowMyCard();
-                else
-                    clickedCard.SetPos(clickedCard.DefaultPos);
             }
         }
 

@@ -39,7 +39,7 @@ namespace mDEV.Characters
             isPlaying = false;
         }
 
-        public void Dead()
+        public virtual void Dead()
         {
             GameManager.Instance.RemoveCharacter(this);
 

@@ -9,7 +9,7 @@ namespace mDEV.Cards
     {
         public override void Effect()
         {
-            GameManager.Instance.UpdateScore(5);
+            GameManager.Instance.UpdateScore(value);
         }
     }
 }

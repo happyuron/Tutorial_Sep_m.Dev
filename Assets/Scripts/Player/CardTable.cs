@@ -12,12 +12,11 @@ namespace mDEV.Characters
 
         private void Awake()
         {
-            cards = DataManager.Instance.cardList;
         }
 
         private void Start()
         {
-
+            cards = DataManager.Instance.cardList;
         }
     }
 }

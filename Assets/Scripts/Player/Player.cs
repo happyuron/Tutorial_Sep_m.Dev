@@ -16,6 +16,13 @@ namespace mDEV.Characters
                 myCards[i].owner = this;
             }
         }
+
+        public override void Dead()
+        {
+            base.Dead();
+            ChangeTurn();
+        }
+
         public override void StartTurn(int recoverMp)
         {
             base.StartTurn(recoverMp);
