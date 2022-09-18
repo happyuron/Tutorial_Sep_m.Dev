@@ -42,6 +42,7 @@ namespace mDEV.Characters
         public virtual void Dead()
         {
             GameManager.Instance.RemoveCharacter(this);
+            GameManager.Instance.ChangeTurnDead();
 
         }
 

@@ -32,7 +32,7 @@ namespace mDEV.Characters
         public override void StartTurn(int recoverMp)
         {
             base.StartTurn(recoverMp);
-            StartCoroutine(WaitingForSeconds(1f));
+            StartCoroutine(WaitingForSeconds(.2f));
             Debug.Log("AI turn" + gameObject.name);
             SetWeights();
         }
@@ -56,7 +56,6 @@ namespace mDEV.Characters
         {
             base.Dead();
             StopAllCoroutines();
-            ChangeTurn();
         }
 
         public void SetWeights()

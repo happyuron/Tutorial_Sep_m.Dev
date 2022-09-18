@@ -17,12 +17,6 @@ namespace mDEV.Characters
             }
         }
 
-        public override void Dead()
-        {
-            base.Dead();
-            ChangeTurn();
-        }
-
         public override void StartTurn(int recoverMp)
         {
             base.StartTurn(recoverMp);

@@ -63,7 +63,6 @@ namespace mDEV.Manager
         {
             playerIndex = playerIndex >= Players.Length ? 0 : playerIndex;
             curPlayingCharacter = Players[playerIndex];
-            UpdateScore(0);
         }
 
         public void UpdateScore(int value)
@@ -85,6 +84,10 @@ namespace mDEV.Manager
         public void RemoveCharacter(Character target)
         {
             Players = Players.Remove(target);
+            if (Players.Length <= 1)
+            {
+
+            }
         }
 
 
