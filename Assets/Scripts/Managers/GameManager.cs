@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using mDEV.Characters;
-using TMPro;
 using mDEV.Extensions;
 
 namespace mDEV.Manager
@@ -30,7 +29,6 @@ namespace mDEV.Manager
 
 
 
-        public TextMeshProUGUI scoreText;
 
         [field: SerializeField] public Character curPlayingCharacter { get; private set; }
 
@@ -80,12 +78,12 @@ namespace mDEV.Manager
                 curPlayingCharacter.Dead();
                 Score = MaxScore;
             }
-            scoreText.text = Score.ToString();
+            UiManager.Instance.scoreText.text = Score.ToString();
         }
 
         public void UpdateScore()
         {
-            scoreText.text = Score.ToString();
+            UiManager.Instance.scoreText.text = Score.ToString();
         }
 
         public void RemoveCharacter(Character target)

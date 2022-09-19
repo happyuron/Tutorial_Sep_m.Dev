@@ -7,12 +7,9 @@ using mDEV.Cards;
 
 namespace mDEV.Characters
 {
-    public delegate void AttackDelegate(int value);
     public class Character : MonoBehaviour
     {
         public Card[] myCards;
-
-        public AttackDelegate CheckAttack;
 
         [field: SerializeField] public Card LastCard { get; private set; }
         public int maxMp { get; private set; }
@@ -22,11 +19,11 @@ namespace mDEV.Characters
 
         protected virtual void Awake()
         {
-            myCards = new Card[GameManager.Instance.cardCount];
         }
 
         protected virtual void Start()
         {
+            myCards = new Card[GameManager.Instance.cardCount];
             maxMp = GameManager.Instance.MaxMP;
             curMp = maxMp;
 

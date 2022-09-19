@@ -30,6 +30,12 @@ namespace mDEV.Characters
         protected override void Awake()
         {
             base.Awake();
+        }
+
+
+        protected override void Start()
+        {
+            base.Start();
             SearchTable = new bool[myCards.Length];
             CardRoot = new int[myCards.Length];
             CardRootTmp = new int[myCards.Length];
@@ -37,6 +43,7 @@ namespace mDEV.Characters
             {
                 myCards[i] = DataManager.Instance.GetRandomCard();
             }
+
         }
         public override void StartTurn(int recoverMp)
         {
@@ -74,10 +81,10 @@ namespace mDEV.Characters
 
         public IEnumerator PlayComplexAI(float time)
         {
-            Debug.Log("PlayComplexAI");
             for (int i = 0; i < CardRoot.Length; i++)
             {
                 yield return new WaitForSeconds(time);
+                Debug.Log(gameObject.name + " " + myCards[CardRoot[i]].gameObject.name);
                 myCards[CardRoot[i]].Effect();
             }
             ChangeTurn();
@@ -107,7 +114,6 @@ namespace mDEV.Characters
 
             while (index > 0)
             {
-                Debug.Log(gameObject.name + "Index = " + index);
                 if (myCards[index].cardInfo.cost <= mp && !SearchTable[index])
                 {
                     CardRootTmp[count] = index;
@@ -121,6 +127,7 @@ namespace mDEV.Characters
                         }
                     }
                 }
+                CardRootTmp[count] = 0;
                 SearchTable[index] = false;
                 index--;
             }

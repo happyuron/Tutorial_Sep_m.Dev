@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using mDEV.Cards;
 using mDEV.Ui;
+using TMPro;
 
 namespace mDEV.Manager
 {
@@ -15,10 +16,12 @@ namespace mDEV.Manager
 
         public Image GameEndUi;
 
+        public TextMeshProUGUI scoreText;
 
-        private void Start()
+        protected override void Awake()
         {
-            cardUis = new CardUi[DataManager.Instance.cardList.Length];
+            base.Awake();
+            cardUis = new CardUi[GameManager.Instance.cardCount];
 
         }
 
