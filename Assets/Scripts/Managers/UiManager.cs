@@ -15,7 +15,6 @@ namespace mDEV.Manager
         private void Start()
         {
             cardUis = new CardUi[DataManager.Instance.cardList.Length];
-            MakeCardUi(DataManager.Instance.cardList);
 
         }
 

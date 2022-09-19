@@ -13,8 +13,8 @@ namespace mDEV.Characters
             for (int i = 0; i < myCards.Length; i++)
             {
                 myCards[i] = DataManager.Instance.GetRandomCard();
-                myCards[i].owner = this;
             }
+            UiManager.Instance.MakeCardUi(myCards);
         }
 
         public override void StartTurn(int recoverMp)

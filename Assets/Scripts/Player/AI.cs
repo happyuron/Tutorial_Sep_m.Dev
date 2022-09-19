@@ -23,11 +23,12 @@ namespace mDEV.Characters
         protected override void Start()
         {
             base.Start();
-            for (int i = 0; i < myCards.Length; i++)
+
+            for (int i = 0; i < GameManager.Instance.cardCount; i++)
             {
                 myCards[i] = DataManager.Instance.GetRandomCard();
-                myCards[i].owner = this;
             }
+
         }
         public override void StartTurn(int recoverMp)
         {

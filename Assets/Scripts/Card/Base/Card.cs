@@ -12,16 +12,11 @@ namespace mDEV.Cards
 
         public StatusType cardType;
 
-
-
-        public Character owner;
-
         public CardInfo cardInfo;
 
         public RectTransform rectTr;
 
-        private Vector3 defaultPos;
-
+        public bool canUse = true;
 
         protected virtual void Awake()
         {
@@ -30,8 +25,8 @@ namespace mDEV.Cards
 
         public virtual void Effect()
         {
-            owner.curMp -= cardInfo.cost;
-            Debug.Log("Card");
+            GameManager.Instance.curPlayingCharacter.SetLastCard(this);
+            GameManager.Instance.curPlayingCharacter.curMp -= cardInfo.cost;
         }
     }
 }

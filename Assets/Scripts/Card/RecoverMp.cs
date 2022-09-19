@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using mDEV.Manager;
 
 namespace mDEV.Cards
 {
@@ -9,7 +10,7 @@ namespace mDEV.Cards
         public override void Effect()
         {
             base.Effect();
-            owner.curMp += cardInfo.value;
+            GameManager.Instance.curPlayingCharacter.curMp += cardInfo.value;
         }
     }
 }

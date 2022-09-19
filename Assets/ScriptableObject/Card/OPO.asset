@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6752fdd40941f5842b9c749a1ab13ee4, type: 3}
+  m_Name: OPO
+  m_EditorClassIdentifier: 
+  cardName: "1 + 1\uCE74\uB4DC"
+  description: "\uC774 \uCE74\uB4DC\uB97C \uC0AC\uC6A9\uD558\uBA74 \uB2E4\uC74C \uACF5\uACA9
+    \uCE74\uB4DC\uC758 \uB300\uBBF8\uC9C0\uAC00 \uD55C\uBC88 \uB354 \uB4E4\uC5B4\uAC04\uB2E4."
+  cost: 2
+  cardSprite: {fileID: 0}
+  value: 2

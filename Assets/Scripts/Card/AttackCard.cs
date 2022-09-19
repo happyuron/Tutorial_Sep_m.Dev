@@ -9,8 +9,15 @@ namespace mDEV.Cards
     {
         public override void Effect()
         {
+
             base.Effect();
-            GameManager.Instance.UpdateScore(cardInfo.value);
+            Attack(cardInfo.value);
+        }
+
+        public void Attack(int value)
+        {
+            GameManager.Instance.UpdateScore(value);
+
         }
     }
 }
