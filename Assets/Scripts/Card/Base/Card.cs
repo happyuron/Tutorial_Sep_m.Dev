@@ -23,10 +23,15 @@ namespace mDEV.Cards
             rectTr = GetComponent<RectTransform>();
         }
 
-        public virtual void Effect()
+        public virtual bool Effect()
         {
-            GameManager.Instance.curPlayingCharacter.SetLastCard(this);
-            GameManager.Instance.curPlayingCharacter.curMp -= cardInfo.cost;
+            if (cardInfo.cost <= GameManager.Instance.curPlayingCharacter.curMp && canUse)
+            {
+                GameManager.Instance.curPlayingCharacter.SetLastCard(this);
+                GameManager.Instance.curPlayingCharacter.curMp -= cardInfo.cost;
+                return true;
+            }
+            return false;
         }
     }
 }

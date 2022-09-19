@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using mDEV.Cards;
 using mDEV.Ui;
 
@@ -11,6 +12,9 @@ namespace mDEV.Manager
         [SerializeField] private RectTransform parentGameObject;
 
         public CardUi[] cardUis;
+
+        public Image GameEndUi;
+
 
         private void Start()
         {
@@ -46,6 +50,11 @@ namespace mDEV.Manager
             {
                 cardUis[i].SetActive(true);
             }
+        }
+
+        public void ShowGameEndUi()
+        {
+
         }
     }
 }

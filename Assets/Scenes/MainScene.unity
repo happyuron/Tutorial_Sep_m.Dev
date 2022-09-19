@@ -408,9 +408,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 0
-  owner: {fileID: 0}
   cardInfo: {fileID: 11400000, guid: df10541c3fce57e45b02173307b9551f, type: 2}
   rectTr: {fileID: 0}
+  canUse: 1
 --- !u!1 &456636122
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,9 +456,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 2
-  owner: {fileID: 0}
   cardInfo: {fileID: 11400000, guid: ff5b412dc9f91374e868c709e49b46a8, type: 2}
   rectTr: {fileID: 0}
+  canUse: 1
 --- !u!1 &616785217
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,9 +504,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 0
-  owner: {fileID: 0}
   cardInfo: {fileID: 11400000, guid: d569b472c79a49c488a0c4ac00a43622, type: 2}
   rectTr: {fileID: 0}
+  canUse: 1
 --- !u!1 &849465111
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ca534162af014408ce4ef3c69946c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerIndex: 0
   <MaxMP>k__BackingField: 5
   recoverMp: 3
   <Players>k__BackingField: []
@@ -831,6 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentGameObject: {fileID: 892046652}
   cardUis: []
+  GameEndUi: {fileID: 0}
 --- !u!1 &1161227429
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161227429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: -0.01, z: 0}
+  m_LocalPosition: {x: 8.42, y: -4.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -929,6 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCards: []
+  <LastCard>k__BackingField: {fileID: 0}
   curMp: 0
   isPlaying: 0
 --- !u!1 &1334949648
@@ -1136,9 +1137,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 0
-  owner: {fileID: 0}
   cardInfo: {fileID: 11400000, guid: 108f41531efe1ca469188f71e72640c5, type: 2}
   rectTr: {fileID: 0}
+  canUse: 1
 --- !u!1 &1501997923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,7 +1218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501997923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 4.36, z: 0}
+  m_LocalPosition: {x: 8.31, y: 4.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1237,6 +1238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCards: []
+  <LastCard>k__BackingField: {fileID: 0}
   curMp: 0
   isPlaying: 0
 --- !u!1 &1693379120
@@ -1401,7 +1403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764179279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.96, y: -0.01, z: 0}
+  m_LocalPosition: {x: -8.02, y: 4.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1421,6 +1423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCards: []
+  <LastCard>k__BackingField: {fileID: 0}
   curMp: 0
   isPlaying: 0
 --- !u!1 &1834078987
@@ -1602,9 +1605,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 2
-  owner: {fileID: 0}
   cardInfo: {fileID: 11400000, guid: 5946566762e1ef240842df2b5c40ceb8, type: 2}
   rectTr: {fileID: 0}
+  canUse: 1
+  <CharacterList>k__BackingField: 
 --- !u!1 &2077052644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1754,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2120749939}
   - component: {fileID: 2120749937}
-  - component: {fileID: 2120749940}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1771,6 +1774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCards: []
+  <LastCard>k__BackingField: {fileID: 0}
   curMp: 0
   isPlaying: 0
 --- !u!4 &2120749939
@@ -1788,15 +1792,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2120749940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120749936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac7ec064a6a4db4ebb0922bddccee3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

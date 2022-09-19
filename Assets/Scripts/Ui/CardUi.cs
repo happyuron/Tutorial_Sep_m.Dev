@@ -34,8 +34,7 @@ namespace mDEV.Ui
 
         public void ShowMyCard()
         {
-            card.Effect();
-            SetActive(false);
+            SetActive(!card.Effect());
         }
 
     }

@@ -3,35 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using mDEV.Characters;
 using mDEV.Manager;
+using mDEV.Extensions;
 
 namespace mDEV.Cards
 {
     public class OPOCard : Card
     {
-        Character orderedChar;
-        public override void Effect()
+        [field: SerializeField] public bool[] CharacterList { get; set; }
+
+        private void Start()
         {
-            base.Effect();
-            StopAllCoroutines();
-            StartCoroutine(OnePlusOne());
-            orderedChar = GameManager.Instance.curPlayingCharacter;
+            GameManager.Instance.deadDel += RemoveCharacter;
+            CharacterList = new bool[4];
         }
 
-        public IEnumerator OnePlusOne()
+        public void RemoveCharacter(int index)
         {
-            canUse = false;
+            for (int i = index; i < GameManager.Instance.Players.Length - 1; i++)
+            {
+                CharacterList[i] = CharacterList[i + 1];
+            }
+        }
+
+        public override bool Effect()
+        {
+            if (!CharacterList[GameManager.Instance.PlayerIndex])
+            {
+                base.Effect();
+                StartCoroutine(OnePlusOne(GameManager.Instance.curPlayingCharacter));
+                return true;
+            }
+            return false;
+        }
+
+        public IEnumerator OnePlusOne(Character character)
+        {
+            CharacterList[GameManager.Instance.PlayerIndex] = true;
             while (true)
             {
                 yield return null;
-                if (orderedChar.LastCard.cardType == StatusType.ATTACK)
+                if (character.LastCard.cardType == StatusType.ATTACK)
                 {
-                    orderedChar.LastCard.GetComponent<AttackCard>().Attack(orderedChar.LastCard.cardInfo.value);
-                    canUse = true;
+                    character.LastCard.GetComponent<AttackCard>().Attack(character.LastCard.cardInfo.value);
+                    CharacterList[GameManager.Instance.PlayerIndex] = false;
                     break;
                 }
 
 
             }
+            CharacterList[GameManager.Instance.PlayerIndex] = false;
+
         }
     }
 }

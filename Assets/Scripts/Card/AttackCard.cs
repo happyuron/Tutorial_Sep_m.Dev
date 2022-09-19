@@ -7,11 +7,12 @@ namespace mDEV.Cards
 {
     public class AttackCard : Card
     {
-        public override void Effect()
+        public override bool Effect()
         {
 
             base.Effect();
             Attack(cardInfo.value);
+            return true;
         }
 
         public void Attack(int value)

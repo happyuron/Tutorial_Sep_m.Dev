@@ -9,7 +9,10 @@ namespace mDEV.Manager
 {
     public class GameManager : Singleton<GameManager>
     {
-        [SerializeField] private int playerIndex;
+        public delegate void PlayerDeadDel(int index);
+
+        public PlayerDeadDel deadDel;
+        [SerializeField] public int PlayerIndex { get; private set; }
 
         [field: SerializeField] public int MaxMP { get; private set; }
 
@@ -42,8 +45,8 @@ namespace mDEV.Manager
         {
             Score = MaxScore;
             Players = FindObjectsOfType<Character>();
-            playerIndex = Random.Range(0, Players.Length);
-            curPlayingCharacter = Players[playerIndex];
+            PlayerIndex = Random.Range(0, Players.Length);
+            curPlayingCharacter = Players[PlayerIndex];
             curPlayingCharacter.StartTurn(recoverMp);
             UpdateScore();
         }
@@ -54,8 +57,8 @@ namespace mDEV.Manager
             if (ordered == curPlayingCharacter)
             {
                 curPlayingCharacter.EndTurn();
-                playerIndex = playerIndex >= Players.Length - 1 ? 0 : 1 + playerIndex;
-                curPlayingCharacter = Players[playerIndex];
+                PlayerIndex = PlayerIndex >= Players.Length - 1 ? 0 : 1 + PlayerIndex;
+                curPlayingCharacter = Players[PlayerIndex];
                 UpdateScore(1);
                 curPlayingCharacter.isPlaying = true;
                 curPlayingCharacter.StartTurn(recoverMp);
@@ -64,9 +67,10 @@ namespace mDEV.Manager
 
         public void ChangeTurnDead()
         {
-            playerIndex = playerIndex >= Players.Length ? 0 : playerIndex;
-            curPlayingCharacter = Players[playerIndex];
+            PlayerIndex = PlayerIndex >= Players.Length ? 0 : PlayerIndex;
+            curPlayingCharacter = Players[PlayerIndex];
             curPlayingCharacter.StartTurn(recoverMp);
+            deadDel(PlayerIndex);
         }
 
         public void UpdateScore(int value)
@@ -88,12 +92,20 @@ namespace mDEV.Manager
         public void RemoveCharacter(Character target)
         {
             Players = Players.Remove(target);
-            if (Players.Length <= 1)
+            if (Players.Length == 1)
             {
-
+                GameEnd(Players[0]);
             }
         }
 
+        public void GameEnd(Character character)
+        {
+            UiManager.Instance.ShowGameEndUi();
+            if (character.GetComponent<AI>())
+            {
+                character.StopAllCoroutines();
+            }
+        }
 
     }
 }

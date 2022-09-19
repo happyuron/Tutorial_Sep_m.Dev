@@ -7,10 +7,11 @@ namespace mDEV.Cards
 {
     public class RecoverMp : Card
     {
-        public override void Effect()
+        public override bool Effect()
         {
             base.Effect();
             GameManager.Instance.curPlayingCharacter.curMp += cardInfo.value;
+            return true;
         }
     }
 }
