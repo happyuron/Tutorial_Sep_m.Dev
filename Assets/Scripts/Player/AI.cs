@@ -23,9 +23,9 @@ namespace mDEV.Characters
         protected override void Start()
         {
             base.Start();
-            myCards = GetComponentsInChildren<Card>();
             for (int i = 0; i < myCards.Length; i++)
             {
+                myCards[i] = DataManager.Instance.GetRandomCard();
                 myCards[i].owner = this;
             }
         }
@@ -63,7 +63,7 @@ namespace mDEV.Characters
             for (int i = 0; i < myCards.Length; i++)
             {
                 if (myCards[i].cardType == Card.StatusType.ATTACK)
-                    totalAttackDamage += myCards[i].value;
+                    totalAttackDamage += myCards[i].cardInfo.value;
             }
             if (GameManager.Instance.Score > GameManager.Instance.MaxScore - totalAttackDamage)
             {

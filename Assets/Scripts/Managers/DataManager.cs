@@ -9,5 +9,13 @@ namespace mDEV.Manager
     {
         public Card[] cardList;
 
+
+
+        public Card GetRandomCard()
+        {
+            int id = Random.Range(0, cardList.Length);
+
+            return cardList[id];
+        }
     }
 }

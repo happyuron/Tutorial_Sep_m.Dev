@@ -9,7 +9,7 @@ namespace mDEV.Manager
 {
     public class GameManager : Singleton<GameManager>
     {
-        private int playerIndex;
+        [SerializeField] private int playerIndex;
 
         [field: SerializeField] public int MaxMP { get; private set; }
 
@@ -22,6 +22,8 @@ namespace mDEV.Manager
         [field: SerializeField] public int MaxScore { get; private set; }
 
         public int Score { get; private set; }
+
+        public int cardCount;
 
 
 
@@ -38,6 +40,7 @@ namespace mDEV.Manager
 
         private void Start()
         {
+            Score = MaxScore;
             Players = FindObjectsOfType<Character>();
             playerIndex = Random.Range(0, Players.Length);
             curPlayingCharacter = Players[playerIndex];
@@ -63,15 +66,16 @@ namespace mDEV.Manager
         {
             playerIndex = playerIndex >= Players.Length ? 0 : playerIndex;
             curPlayingCharacter = Players[playerIndex];
+            curPlayingCharacter.StartTurn(recoverMp);
         }
 
         public void UpdateScore(int value)
         {
-            Score += value;
-            if (Score >= MaxScore)
+            Score -= value;
+            if (Score <= 0)
             {
                 curPlayingCharacter.Dead();
-                Score = 0;
+                Score = MaxScore;
             }
             scoreText.text = Score.ToString();
         }

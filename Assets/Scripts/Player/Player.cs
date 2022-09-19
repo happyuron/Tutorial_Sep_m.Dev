@@ -10,9 +10,9 @@ namespace mDEV.Characters
         protected override void Start()
         {
             base.Start();
-            myCards = DataManager.Instance.cardList;
             for (int i = 0; i < myCards.Length; i++)
             {
+                myCards[i] = DataManager.Instance.GetRandomCard();
                 myCards[i].owner = this;
             }
         }

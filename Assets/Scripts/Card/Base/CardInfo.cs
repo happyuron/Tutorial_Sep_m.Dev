@@ -14,5 +14,7 @@ namespace mDEV.Cards
         public int cost;
 
         public Sprite cardSprite;
+
+        public int value;
     }
 }

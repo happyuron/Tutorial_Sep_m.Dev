@@ -19,7 +19,7 @@ namespace mDEV.Characters
         {
             maxMp = GameManager.Instance.MaxMP;
             curMp = maxMp;
-
+            myCards = new Card[GameManager.Instance.cardCount];
         }
         public void ChangeTurn()
         {

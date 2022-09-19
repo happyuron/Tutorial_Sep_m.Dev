@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using mDEV.Manager;
 
 namespace mDEV.Cards
 {
-    public class AttackCard : Card
+    public class RecoverMp : Card
     {
         public override void Effect()
         {
             base.Effect();
-            GameManager.Instance.UpdateScore(cardInfo.value);
+            owner.curMp += cardInfo.value;
         }
     }
 }

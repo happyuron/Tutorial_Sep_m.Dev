@@ -404,14 +404,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 433302984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed1fb21a13b711447b9b78f0593bcfcd, type: 3}
+  m_Script: {fileID: 11500000, guid: cd419339b8f89f041a471d38b9a9fc03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 0
-  value: 0
-  cost: 5
   owner: {fileID: 0}
-  cardInfo: {fileID: 0}
+  cardInfo: {fileID: 11400000, guid: df10541c3fce57e45b02173307b9551f, type: 2}
   rectTr: {fileID: 0}
 --- !u!1 &456636122
 GameObject:
@@ -422,7 +420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 456636124}
-  - component: {fileID: 456636123}
+  - component: {fileID: 456636125}
   m_Layer: 0
   m_Name: Card (3)
   m_TagString: Untagged
@@ -430,24 +428,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &456636123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456636122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed1fb21a13b711447b9b78f0593bcfcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardType: 0
-  value: 0
-  cost: 0
-  owner: {fileID: 0}
-  cardInfo: {fileID: 0}
-  rectTr: {fileID: 0}
 --- !u!4 &456636124
 Transform:
   m_ObjectHideFlags: 0
@@ -463,6 +443,22 @@ Transform:
   m_Father: {fileID: 849465113}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &456636125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456636122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123966acbefc53345a0d8440a4bb75b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 2
+  owner: {fileID: 0}
+  cardInfo: {fileID: 11400000, guid: ff5b412dc9f91374e868c709e49b46a8, type: 2}
+  rectTr: {fileID: 0}
 --- !u!1 &616785217
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 616785219}
-  - component: {fileID: 616785218}
+  - component: {fileID: 616785220}
   m_Layer: 0
   m_Name: Card (2)
   m_TagString: Untagged
@@ -480,24 +476,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &616785218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616785217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed1fb21a13b711447b9b78f0593bcfcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardType: 0
-  value: 0
-  cost: 0
-  owner: {fileID: 0}
-  cardInfo: {fileID: 0}
-  rectTr: {fileID: 0}
 --- !u!4 &616785219
 Transform:
   m_ObjectHideFlags: 0
@@ -513,6 +491,22 @@ Transform:
   m_Father: {fileID: 849465113}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &616785220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616785217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd419339b8f89f041a471d38b9a9fc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 0
+  owner: {fileID: 0}
+  cardInfo: {fileID: 11400000, guid: d569b472c79a49c488a0c4ac00a43622, type: 2}
+  rectTr: {fileID: 0}
 --- !u!1 &849465111
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,9 +538,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardList:
   - {fileID: 433302986}
-  - {fileID: 1480589050}
-  - {fileID: 616785218}
-  - {fileID: 456636123}
+  - {fileID: 1480589052}
+  - {fileID: 616785220}
+  - {fileID: 456636125}
   - {fileID: 2013072588}
 --- !u!4 &849465113
 Transform:
@@ -766,10 +760,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ca534162af014408ce4ef3c69946c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIndex: 0
   <MaxMP>k__BackingField: 5
   recoverMp: 3
   <Players>k__BackingField: []
   <MaxScore>k__BackingField: 31
+  cardCount: 5
   scoreText: {fileID: 2077052646}
   <curPlayingCharacter>k__BackingField: {fileID: 0}
 --- !u!4 &908885245
@@ -1104,7 +1100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1480589051}
-  - component: {fileID: 1480589050}
+  - component: {fileID: 1480589052}
   m_Layer: 0
   m_Name: Card (1)
   m_TagString: Untagged
@@ -1112,24 +1108,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1480589050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480589049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed1fb21a13b711447b9b78f0593bcfcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardType: 0
-  value: 0
-  cost: 3
-  owner: {fileID: 0}
-  cardInfo: {fileID: 0}
-  rectTr: {fileID: 0}
 --- !u!4 &1480589051
 Transform:
   m_ObjectHideFlags: 0
@@ -1145,6 +1123,22 @@ Transform:
   m_Father: {fileID: 849465113}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1480589052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480589049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd419339b8f89f041a471d38b9a9fc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 0
+  owner: {fileID: 0}
+  cardInfo: {fileID: 11400000, guid: 108f41531efe1ca469188f71e72640c5, type: 2}
+  rectTr: {fileID: 0}
 --- !u!1 &1501997923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,10 +1587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 0
-  value: 0
-  cost: 0
   owner: {fileID: 0}
-  cardInfo: {fileID: 0}
+  cardInfo: {fileID: 11400000, guid: df10541c3fce57e45b02173307b9551f, type: 2}
   rectTr: {fileID: 0}
 --- !u!4 &2013072589
 Transform:

@@ -12,9 +12,7 @@ namespace mDEV.Cards
 
         public StatusType cardType;
 
-        public int value;
 
-        public int cost;
 
         public Character owner;
 
@@ -32,7 +30,7 @@ namespace mDEV.Cards
 
         public virtual void Effect()
         {
-            owner.curMp -= cost;
+            owner.curMp -= cardInfo.cost;
             Debug.Log("Card");
         }
     }
