@@ -15,7 +15,7 @@ namespace mDEV.Characters
 
         private int[] CardRoot { get; set; }
 
-        private int[] CardRootTmp { get; set; }
+        private List<int> CardRootTmp = new List<int>();
 
         private int totalAttackDamage;
 
@@ -38,7 +38,6 @@ namespace mDEV.Characters
             base.Start();
             SearchTable = new bool[myCards.Length];
             CardRoot = new int[myCards.Length];
-            CardRootTmp = new int[myCards.Length];
             for (int i = 0; i < GameManager.Instance.cardCount; i++)
             {
                 myCards[i] = DataManager.Instance.GetRandomCard();
@@ -84,8 +83,13 @@ namespace mDEV.Characters
             for (int i = 0; i < CardRoot.Length; i++)
             {
                 yield return new WaitForSeconds(time);
-                Debug.Log(gameObject.name + " " + myCards[CardRoot[i]].gameObject.name);
-                myCards[CardRoot[i]].Effect();
+                if (CardRoot[i] < myCards.Length && curMp >= myCards[i].cardInfo.cost)
+                {
+                    Debug.Log(gameObject.name + " " + myCards[CardRoot[i]].gameObject.name);
+
+                    myCards[CardRoot[i]].Effect();
+
+                }
             }
             ChangeTurn();
         }
@@ -99,39 +103,35 @@ namespace mDEV.Characters
         public void SetWeights()
         {
             Debug.Log(gameObject.name + myCards.Length);
-            FindHugeDamage(myCards.Length - 1, curMp, 0);
+            FindHugeDamage(curMp, 0);
         }
 
-        public int FindHugeDamage(int index, int mp, int count)
+        public int FindHugeDamage(int mp, int count)
         {
-            if (index <= 0)
+            bool isChanged = false;
+            int index = 0;
+            for (int j = 0; j < myCards.Length; j++)
             {
-                if (myCards[index].cardType == Card.StatusType.ATTACK)
-                    return myCards[index].cardInfo.value;
-                else
-                    return 0;
-            }
-
-            while (index > 0)
-            {
-                if (myCards[index].cardInfo.cost <= mp && !SearchTable[index])
+                if (myCards[j].cardInfo.cost <= mp && !SearchTable[j])
                 {
-                    CardRootTmp[count] = index;
-                    SearchTable[index] = true;
-                    int tmp = FindHugeDamage(index - 1, mp - myCards[index].cardInfo.cost, count + 1);
+                    isChanged = true;
+                    CardRootTmp.Add(j);
+                    index = j;
+                    SearchTable[j] = true;
+                    int tmp = FindHugeDamage(mp - myCards[j].cardInfo.cost, count + 1);
+                    tmp += myCards[j].cardType == Card.StatusType.ATTACK ? myCards[j].cardInfo.value : 0;
                     if (tmp > totalAttackDamage)
                     {
-                        for (int i = 0; i < myCards.Length; i++)
+                        CardRoot = new int[CardRootTmp.Count];
+                        for (int i = 0; i < CardRootTmp.Count; i++)
                         {
                             CardRoot[i] = CardRootTmp[i];
                         }
                     }
+                    CardRootTmp.RemoveAt(CardRootTmp.Count - 1);
                 }
-                CardRootTmp[count] = 0;
-                SearchTable[index] = false;
-                index--;
             }
-            if (myCards[index].cardType == Card.StatusType.ATTACK)
+            if (myCards[index].cardType == Card.StatusType.ATTACK && isChanged)
                 return myCards[index].cardInfo.value;
             else
                 return 0;
