@@ -9,7 +9,7 @@ namespace mDEV.Characters
 {
     public class AI : Character
     {
-        private int damage;
+        [field: SerializeField] public float WaitingTime;
 
         private bool[] SearchTable { get; set; }
 
@@ -19,34 +19,28 @@ namespace mDEV.Characters
 
         private int totalAttackDamage;
 
-        private float attackWeight;
 
-        private float defenseWeight;
-
-        private float healWeight;
         private List<Card> aiCardTable = new List<Card>();
 
 
         public delegate void voidList();
 
         public delegate voidList TodoList();
-        protected override void Start()
+
+        protected override void Awake()
         {
-            base.Start();
+            base.Awake();
             SearchTable = new bool[myCards.Length];
             CardRoot = new int[myCards.Length];
             CardRootTmp = new int[myCards.Length];
-
             for (int i = 0; i < GameManager.Instance.cardCount; i++)
             {
                 myCards[i] = DataManager.Instance.GetRandomCard();
             }
-
         }
         public override void StartTurn(int recoverMp)
         {
             base.StartTurn(recoverMp);
-            StartCoroutine(WaitingForSeconds(.2f));
             Debug.Log("AI turn" + gameObject.name);
             ComplexAI();
         }
@@ -55,20 +49,17 @@ namespace mDEV.Characters
         {
             base.EndTurn();
             totalAttackDamage = 0;
-            attackWeight = 0;
-            defenseWeight = 0;
-            healWeight = 0;
         }
 
         public void ComplexAI()
         {
             SetWeights();
-            PlayComplexAI(.2f);
+            StartCoroutine(PlayComplexAI(WaitingTime));
         }
 
         public void SimpleAI()
         {
-            StartCoroutine(WaitingForSeconds(.2f));
+            StartCoroutine(WaitingForSeconds(WaitingTime));
         }
 
         private IEnumerator WaitingForSeconds(float time)
@@ -83,11 +74,13 @@ namespace mDEV.Characters
 
         public IEnumerator PlayComplexAI(float time)
         {
+            Debug.Log("PlayComplexAI");
             for (int i = 0; i < CardRoot.Length; i++)
             {
                 yield return new WaitForSeconds(time);
                 myCards[CardRoot[i]].Effect();
             }
+            ChangeTurn();
         }
 
         public override void Dead()
@@ -98,6 +91,7 @@ namespace mDEV.Characters
 
         public void SetWeights()
         {
+            Debug.Log(gameObject.name + myCards.Length);
             FindHugeDamage(myCards.Length - 1, curMp, 0);
         }
 
@@ -105,7 +99,6 @@ namespace mDEV.Characters
         {
             if (index <= 0)
             {
-
                 if (myCards[index].cardType == Card.StatusType.ATTACK)
                     return myCards[index].cardInfo.value;
                 else
@@ -114,6 +107,7 @@ namespace mDEV.Characters
 
             while (index > 0)
             {
+                Debug.Log(gameObject.name + "Index = " + index);
                 if (myCards[index].cardInfo.cost <= mp && !SearchTable[index])
                 {
                     CardRootTmp[count] = index;

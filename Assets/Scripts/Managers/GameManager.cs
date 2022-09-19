@@ -51,7 +51,6 @@ namespace mDEV.Manager
             UpdateScore();
         }
 
-
         public void ChangeTurn(Character ordered)
         {
             if (ordered == curPlayingCharacter)

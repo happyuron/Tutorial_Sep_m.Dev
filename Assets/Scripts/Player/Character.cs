@@ -20,11 +20,16 @@ namespace mDEV.Characters
 
         public bool isPlaying;
 
+        protected virtual void Awake()
+        {
+            myCards = new Card[GameManager.Instance.cardCount];
+        }
+
         protected virtual void Start()
         {
             maxMp = GameManager.Instance.MaxMP;
             curMp = maxMp;
-            myCards = new Card[GameManager.Instance.cardCount];
+
         }
 
         public void SetLastCard(Card lastCard)
