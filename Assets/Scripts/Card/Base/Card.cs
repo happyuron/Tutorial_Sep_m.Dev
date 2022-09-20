@@ -8,7 +8,7 @@ namespace mDEV.Cards
 {
     public class Card : MonoBehaviour
     {
-        public enum StatusType { ATTACK, DEFENSE, HEAL };
+        public enum StatusType { PLUS, HEAL, ATTACK };
 
         public StatusType cardType;
 

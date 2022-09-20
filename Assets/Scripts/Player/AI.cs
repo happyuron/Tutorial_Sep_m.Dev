@@ -13,20 +13,11 @@ namespace mDEV.Characters
 
         private bool[] SearchTable { get; set; }
 
-        private int[] CardRoot { get; set; }
+        private List<int> CardRoot = new List<int>();
 
         private List<int> CardRootTmp = new List<int>();
 
         private int totalAttackDamage;
-
-
-        private List<Card> aiCardTable = new List<Card>();
-
-
-        public delegate void voidList();
-
-        public delegate voidList TodoList();
-
         protected override void Awake()
         {
             base.Awake();
@@ -37,7 +28,6 @@ namespace mDEV.Characters
         {
             base.Start();
             SearchTable = new bool[myCards.Length];
-            CardRoot = new int[myCards.Length];
             for (int i = 0; i < GameManager.Instance.cardCount; i++)
             {
                 myCards[i] = DataManager.Instance.GetRandomCard();
@@ -47,46 +37,60 @@ namespace mDEV.Characters
         public override void StartTurn(int recoverMp)
         {
             base.StartTurn(recoverMp);
-            ComplexAI();
+            SimpleAI();
         }
 
         public override void EndTurn()
         {
             base.EndTurn();
+            StopAllCoroutines();
             totalAttackDamage = 0;
+            CardRoot.Clear();
         }
 
         public void ComplexAI()
         {
             SetWeights();
-            StartCoroutine(PlayComplexAI(WaitingTime));
+            StartCoroutine(PlayAI(WaitingTime));
         }
 
         public void SimpleAI()
         {
-            StartCoroutine(WaitingForSeconds(WaitingTime));
+            SetSimpleAI();
+            StartCoroutine(PlayAI(WaitingTime));
         }
 
-        private IEnumerator WaitingForSeconds(float time)
+        private void SetSimpleAI()
         {
-            for (int i = 0; i < myCards.Length; i++)
+            Card.StatusType tmp = 0;
+            for (int j = 0; j < 3; j++)
             {
-                yield return new WaitForSeconds(time);
-                myCards[i].Effect();
-            }
-            ChangeTurn();
-        }
-
-        public IEnumerator PlayComplexAI(float time)
-        {
-            for (int i = 0; i < CardRoot.Length; i++)
-            {
-                yield return new WaitForSeconds(time);
-                if (CardRoot[i] < myCards.Length && CurMp >= myCards[i].cardInfo.cost)
+                for (int i = 0; i < myCards.Length; i++)
                 {
-                    Debug.Log(gameObject.name + " " + myCards[CardRoot[i]].gameObject.name);
+                    if (myCards[i].cardType == tmp)
+                    {
+                        CardRoot.Add(i);
+                    }
+                }
+                Debug.Log(CardRoot.Count);
+                tmp++;
+            }
+        }
 
-                    myCards[CardRoot[i]].Effect();
+        public IEnumerator PlayAI(float time)
+        {
+            for (int i = 0; i < CardRoot.Count; i++)
+            {
+                yield return new WaitForSeconds(time / 2);
+                if (CardRoot[i] < myCards.Length)
+                {
+                    if (CurMp >= myCards[CardRoot[i]].cardInfo.cost)
+                    {
+                        Debug.Log(gameObject.name + " " + myCards[CardRoot[i]].gameObject.name);
+
+                        myCards[CardRoot[i]].Effect();
+
+                    }
 
                 }
             }
@@ -120,7 +124,7 @@ namespace mDEV.Characters
                     tmp += myCards[j].cardType == Card.StatusType.ATTACK ? myCards[j].cardInfo.value : 0;
                     if (tmp > totalAttackDamage)
                     {
-                        CardRoot = new int[CardRootTmp.Count];
+                        CardRoot.Clear();
                         for (int i = 0; i < CardRootTmp.Count; i++)
                         {
                             CardRoot[i] = CardRootTmp[i];

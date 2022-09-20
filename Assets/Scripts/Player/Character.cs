@@ -10,9 +10,11 @@ namespace mDEV.Characters
 {
     public class Character : MonoBehaviour
     {
-
+        private SpriteRenderer sprite;
         public ManaBar myMpBar;
         public Card[] myCards;
+
+        public SpriteRenderer lastCardSprite;
 
         [field: SerializeField] public Card LastCard { get; private set; }
         public int MaxMp { get; private set; }
@@ -38,10 +40,12 @@ namespace mDEV.Characters
 
         protected virtual void Awake()
         {
+            sprite = GetComponent<SpriteRenderer>();
         }
 
         protected virtual void Start()
         {
+            sprite.color = new Color(1, 1, 1, .5f);
             myCards = new Card[GameManager.Instance.cardCount];
             MaxMp = GameManager.Instance.MaxMP;
             CurMp = MaxMp;
@@ -51,7 +55,9 @@ namespace mDEV.Characters
         public void SetLastCard(Card lastCard)
         {
             LastCard = lastCard;
+            lastCardSprite.sprite = LastCard.cardInfo.cardSprite;
         }
+
 
 
         public void ChangeTurn()
@@ -61,6 +67,7 @@ namespace mDEV.Characters
 
         public virtual void StartTurn(int recoverMp)
         {
+            sprite.color = new Color(1, 1, 1, 1);
             CurMp += recoverMp;
             if (MaxMp < CurMp)
                 CurMp = MaxMp;
@@ -69,6 +76,8 @@ namespace mDEV.Characters
 
         public virtual void EndTurn()
         {
+            sprite.color = new Color(1, 1, 1, .5f);
+            lastCardSprite.sprite = null;
             isPlaying = false;
         }
 

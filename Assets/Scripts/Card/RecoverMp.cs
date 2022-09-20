@@ -11,6 +11,8 @@ namespace mDEV.Cards
         {
             base.Effect();
             GameManager.Instance.curPlayingCharacter.CurMp += cardInfo.value;
+            if (GameManager.Instance.curPlayingCharacter.CurMp > GameManager.Instance.MaxMP)
+                GameManager.Instance.curPlayingCharacter.CurMp = GameManager.Instance.MaxMP;
             return true;
         }
     }

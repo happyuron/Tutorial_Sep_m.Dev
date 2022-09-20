@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using mDEV.Cards;
+using UnityEngine.UI;
 
 namespace mDEV.Ui
 {
     public class CardUi : MonoBehaviour
     {
+        private Image cardImage;
         public RectTransform rectTr;
 
         public Vector3 DefaultPos { get; private set; }
@@ -15,6 +17,16 @@ namespace mDEV.Ui
         private void Awake()
         {
             rectTr = GetComponent<RectTransform>();
+            cardImage = GetComponent<Image>();
+        }
+
+        public void SetCard(Card value)
+        {
+            card = value;
+            if (card != null)
+            {
+                cardImage.sprite = card.cardInfo.cardSprite;
+            }
         }
 
         public void SetDafaultPos(Vector3 newPos)
@@ -35,6 +47,7 @@ namespace mDEV.Ui
         public void ShowMyCard()
         {
             SetActive(!card.Effect());
+            SetPos(DefaultPos);
         }
 
     }

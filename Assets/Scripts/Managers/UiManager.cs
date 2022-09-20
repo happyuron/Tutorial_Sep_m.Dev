@@ -14,7 +14,9 @@ namespace mDEV.Manager
 
         public CardUi[] cardUis;
 
-        public Image GameEndUi;
+        public Image DefeatUi;
+
+        public Image WinUi;
 
         public TextMeshProUGUI scoreText;
 
@@ -33,7 +35,7 @@ namespace mDEV.Manager
                 tmp.transform.SetParent(parentGameObject.transform);
                 CalRectWide(parentGameObject, tmp.rectTr, i, list.Length);
                 tmp.SetDafaultPos(tmp.rectTr.position);
-                tmp.card = list[i];
+                tmp.SetCard(list[i]);
                 cardUis[i] = tmp;
             }
         }
@@ -55,8 +57,13 @@ namespace mDEV.Manager
             }
         }
 
-        public void ShowGameEndUi()
+        public void Defeated()
         {
+            DefeatUi.gameObject.SetActive(true);
+        }
+        public void Win()
+        {
+            WinUi.gameObject.SetActive(true);
 
         }
     }

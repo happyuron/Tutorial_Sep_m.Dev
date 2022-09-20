@@ -97,11 +97,25 @@ namespace mDEV.Manager
 
         public void GameEnd(Character character)
         {
-            UiManager.Instance.ShowGameEndUi();
-            if (character.GetComponent<AI>())
+            if (character.GetComponent<Player>())
+            {
+                UiManager.Instance.Win();
+            }
+            else
             {
                 character.StopAllCoroutines();
             }
+        }
+        public void Defeated()
+        {
+            for (int i = 0; i < Players.Length; i++)
+            {
+                if (Players[i].GetComponent<AI>())
+                {
+                    Players[i].StopAllCoroutines();
+                }
+            }
+            UiManager.Instance.Defeated();
         }
 
     }

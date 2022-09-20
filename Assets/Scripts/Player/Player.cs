@@ -22,5 +22,11 @@ namespace mDEV.Characters
             base.StartTurn(recoverMp);
             UiManager.Instance.SetActiveCardUi();
         }
+
+        public override void Dead()
+        {
+            base.Dead();
+            GameManager.Instance.Defeated();
+        }
     }
 }
