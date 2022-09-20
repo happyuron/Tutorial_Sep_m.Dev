@@ -42,11 +42,18 @@ namespace mDEV.Manager
         private void Start()
         {
             Score = MaxScore;
+            StartCoroutine(WaitForFuckingStartFuc());
+            UpdateScore();
+
+        }
+
+        public IEnumerator WaitForFuckingStartFuc()
+        {
+            yield return new WaitForSeconds(1);
             Players = FindObjectsOfType<Character>();
             PlayerIndex = Random.Range(0, Players.Length);
             curPlayingCharacter = Players[PlayerIndex];
             curPlayingCharacter.StartTurn(recoverMp);
-            UpdateScore();
         }
 
         public void ChangeTurn(Character ordered)
