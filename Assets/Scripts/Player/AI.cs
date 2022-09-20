@@ -82,7 +82,7 @@ namespace mDEV.Characters
             for (int i = 0; i < CardRoot.Length; i++)
             {
                 yield return new WaitForSeconds(time);
-                if (CardRoot[i] < myCards.Length && curMp >= myCards[i].cardInfo.cost)
+                if (CardRoot[i] < myCards.Length && CurMp >= myCards[i].cardInfo.cost)
                 {
                     Debug.Log(gameObject.name + " " + myCards[CardRoot[i]].gameObject.name);
 
@@ -101,7 +101,7 @@ namespace mDEV.Characters
 
         public void SetWeights()
         {
-            FindHugeDamage(curMp, 0);
+            FindHugeDamage(CurMp, 0);
         }
 
         public int FindHugeDamage(int mp, int count)

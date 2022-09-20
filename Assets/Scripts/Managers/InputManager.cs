@@ -65,7 +65,7 @@ namespace mDEV.Manager
                         }
                     }
                     if (GameManager.Instance.curPlayingCharacter.GetComponent<Player>() &&
-                        GameManager.Instance.curPlayingCharacter.curMp >= clickedCard.card.cardInfo.cost)
+                        GameManager.Instance.curPlayingCharacter.CurMp >= clickedCard.card.cardInfo.cost)
                         clickedCard.ShowMyCard();
                     else
                         clickedCard.SetPos(clickedCard.DefaultPos);

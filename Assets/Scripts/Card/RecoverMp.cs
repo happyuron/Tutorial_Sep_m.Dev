@@ -10,7 +10,7 @@ namespace mDEV.Cards
         public override bool Effect()
         {
             base.Effect();
-            GameManager.Instance.curPlayingCharacter.curMp += cardInfo.value;
+            GameManager.Instance.curPlayingCharacter.CurMp += cardInfo.value;
             return true;
         }
     }

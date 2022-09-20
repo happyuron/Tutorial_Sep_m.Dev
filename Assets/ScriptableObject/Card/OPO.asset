@@ -16,5 +16,5 @@ MonoBehaviour:
   description: "\uC774 \uCE74\uB4DC\uB97C \uC0AC\uC6A9\uD558\uBA74 \uB2E4\uC74C \uACF5\uACA9
     \uCE74\uB4DC\uC758 \uB300\uBBF8\uC9C0\uAC00 \uD55C\uBC88 \uB354 \uB4E4\uC5B4\uAC04\uB2E4."
   cost: 2
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: -879014759, guid: cbb7d6fa6f4aaaa449dec6ee8d7d31f2, type: 3}
   value: 2

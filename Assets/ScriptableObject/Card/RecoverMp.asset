@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: "\uB9C8\uB098 \uD68C\uBCF5"
   description: "\uB9C8\uB098\uB97C 1\uB9CC\uD07C \uD68C\uBCF5\uD55C\uB2E4"
   cost: 0
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: -1632225362, guid: cbb7d6fa6f4aaaa449dec6ee8d7d31f2, type: 3}
   value: 1

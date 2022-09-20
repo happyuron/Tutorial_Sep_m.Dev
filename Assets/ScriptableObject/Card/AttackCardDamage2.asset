@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: NumberCard 2
   description: "\uC911\uC559\uC758 \uC22B\uC790\uB97C 2 \uC904\uC778\uB2E4"
   cost: 2
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 1523815055, guid: cbb7d6fa6f4aaaa449dec6ee8d7d31f2, type: 3}
   value: 2

@@ -25,10 +25,10 @@ namespace mDEV.Cards
 
         public virtual bool Effect()
         {
-            if (cardInfo.cost <= GameManager.Instance.curPlayingCharacter.curMp && canUse)
+            if (cardInfo.cost <= GameManager.Instance.curPlayingCharacter.CurMp && canUse)
             {
                 GameManager.Instance.curPlayingCharacter.SetLastCard(this);
-                GameManager.Instance.curPlayingCharacter.curMp -= cardInfo.cost;
+                GameManager.Instance.curPlayingCharacter.CurMp -= cardInfo.cost;
                 return true;
             }
             return false;
