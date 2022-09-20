@@ -47,7 +47,6 @@ namespace mDEV.Characters
         public override void StartTurn(int recoverMp)
         {
             base.StartTurn(recoverMp);
-            Debug.Log("AI turn" + gameObject.name);
             ComplexAI();
         }
 
@@ -102,7 +101,6 @@ namespace mDEV.Characters
 
         public void SetWeights()
         {
-            Debug.Log(gameObject.name + myCards.Length);
             FindHugeDamage(curMp, 0);
         }
 
