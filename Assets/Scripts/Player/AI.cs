@@ -13,9 +13,9 @@ namespace mDEV.Characters
 
         private bool[] SearchTable { get; set; }
 
-        private List<int> CardRoot = new List<int>();
+        private Stack<int> CardRoot = new Stack<int>();
 
-        private List<int> CardRootTmp = new List<int>();
+        private Stack<int> CardRootTmp = new Stack<int>();
 
         private int totalAttackDamage;
         protected override void Awake()
@@ -37,7 +37,7 @@ namespace mDEV.Characters
         public override void StartTurn(int recoverMp)
         {
             base.StartTurn(recoverMp);
-            SimpleAI();
+            ComplexAI();
         }
 
         public override void EndTurn()
@@ -69,7 +69,7 @@ namespace mDEV.Characters
                 {
                     if (myCards[i].cardType == tmp)
                     {
-                        CardRoot.Add(i);
+                        CardRoot.Push(i);
                     }
                 }
                 Debug.Log(CardRoot.Count);
@@ -79,21 +79,21 @@ namespace mDEV.Characters
 
         public IEnumerator PlayAI(float time)
         {
+            int tmp = 0;
             for (int i = 0; i < CardRoot.Count; i++)
             {
                 yield return new WaitForSeconds(time / 2);
-                if (CardRoot[i] < myCards.Length)
+                tmp = CardRoot.Pop();
+                if (tmp < myCards.Length)
                 {
-                    if (CurMp >= myCards[CardRoot[i]].cardInfo.cost)
+                    if (CurMp >= myCards[tmp].cardInfo.cost)
                     {
-                        Debug.Log(gameObject.name + " " + myCards[CardRoot[i]].gameObject.name);
-
-                        myCards[CardRoot[i]].Effect();
-
+                        Debug.Log(gameObject.name + " " + myCards[tmp].gameObject.name);
+                        myCards[tmp].Effect();
                     }
-
                 }
             }
+            yield return new WaitForSeconds(time / 2);
             ChangeTurn();
         }
 
@@ -105,36 +105,41 @@ namespace mDEV.Characters
 
         public void SetWeights()
         {
-            FindHugeDamage(CurMp, 0);
+            FindHugeDamage(CurMp, 0,0);
         }
 
-        public int FindHugeDamage(int mp, int count)
+        public int FindHugeDamage(int mp, int count,int rootDamage)
         {
+            if (count >= myCards.Length)
+                return 0;
             bool isChanged = false;
             int index = 0;
+            int damage = 0;
             for (int j = 0; j < myCards.Length; j++)
             {
                 if (myCards[j].cardInfo.cost <= mp && !SearchTable[j])
                 {
                     isChanged = true;
-                    CardRootTmp.Add(j);
+                    CardRootTmp.Push(j);
                     index = j;
-                    SearchTable[j] = true;
-                    int tmp = FindHugeDamage(mp - myCards[j].cardInfo.cost, count + 1);
-                    tmp += myCards[j].cardType == Card.StatusType.ATTACK ? myCards[j].cardInfo.value : 0;
-                    if (tmp > totalAttackDamage)
+                    SearchTable[index] = true;
+                    damage = myCards[index].cardType == Card.StatusType.ATTACK ? myCards[j].cardInfo.value : 0 + rootDamage;
+                    FindHugeDamage(mp - myCards[index].cardInfo.cost, count + 1,damage);
+                    if (damage > totalAttackDamage)
                     {
                         CardRoot.Clear();
+                        totalAttackDamage = damage;
                         for (int i = 0; i < CardRootTmp.Count; i++)
                         {
-                            CardRoot[i] = CardRootTmp[i];
+                            CardRoot.Push(CardRootTmp.ToArray()[i]);
                         }
                     }
-                    CardRootTmp.RemoveAt(CardRootTmp.Count - 1);
+                    SearchTable[index] = false;
+                    CardRootTmp.Pop();
                 }
             }
             if (myCards[index].cardType == Card.StatusType.ATTACK && isChanged)
-                return myCards[index].cardInfo.value;
+                return damage;
             else
                 return 0;
         }
