@@ -105,10 +105,12 @@ namespace mDEV.Characters
 
         public void SetWeights()
         {
-            FindHugeDamage(CurMp, 0,0);
+            int total = 0;
+           FindHugeDamage(CurMp, 0,0,ref total);
+            Debug.Log("damage : " + total);
         }
 
-        public int FindHugeDamage(int mp, int count,int rootDamage)
+        public int FindHugeDamage(int mp, int count,int rootDamage, ref int total)
         {
             if (count >= myCards.Length)
                 return 0;
@@ -124,7 +126,8 @@ namespace mDEV.Characters
                     index = j;
                     SearchTable[index] = true;
                     damage = myCards[index].cardType == Card.StatusType.ATTACK ? myCards[j].cardInfo.value : 0 + rootDamage;
-                    FindHugeDamage(mp - myCards[index].cardInfo.cost, count + 1,damage);
+                    FindHugeDamage(mp - myCards[index].cardInfo.cost, count + 1,damage,ref total);
+                    total = damage > total ? damage : total;
                     if (damage > totalAttackDamage)
                     {
                         CardRoot.Clear();
