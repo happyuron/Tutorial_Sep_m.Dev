@@ -1278,7 +1278,7 @@ GameObject:
   - component: {fileID: 433302985}
   - component: {fileID: 433302986}
   m_Layer: 0
-  m_Name: Card
+  m_Name: Attack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1326,7 +1326,7 @@ GameObject:
   - component: {fileID: 456636124}
   - component: {fileID: 456636125}
   m_Layer: 0
-  m_Name: Card (3)
+  m_Name: RecoverMp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1897,7 +1897,7 @@ GameObject:
   - component: {fileID: 616785219}
   - component: {fileID: 616785220}
   m_Layer: 0
-  m_Name: Card (2)
+  m_Name: Attack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2683,7 +2683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxMP>k__BackingField: 5
-  recoverMp: 3
+  recoverMp: 2
   <Players>k__BackingField: []
   <MaxScore>k__BackingField: 31
   cardCount: 5
@@ -2786,7 +2786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1503098651844269337, guid: 544737fd53b7f0e4c9ed055545f27310, type: 3}
       propertyPath: m_Name
-      value: AI
+      value: Squirrel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 544737fd53b7f0e4c9ed055545f27310, type: 3}
@@ -3733,7 +3733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1503098651844269337, guid: 544737fd53b7f0e4c9ed055545f27310, type: 3}
       propertyPath: m_Name
-      value: AI (1)
+      value: Fish
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 544737fd53b7f0e4c9ed055545f27310, type: 3}
@@ -3901,6 +3901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
@@ -4063,7 +4064,7 @@ GameObject:
   - component: {fileID: 1480589051}
   - component: {fileID: 1480589052}
   m_Layer: 0
-  m_Name: Card (1)
+  m_Name: Attack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4257,7 +4258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1503098651844269337, guid: 544737fd53b7f0e4c9ed055545f27310, type: 3}
       propertyPath: m_Name
-      value: AI (2)
+      value: Snake
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 544737fd53b7f0e4c9ed055545f27310, type: 3}
@@ -4997,7 +4998,7 @@ GameObject:
   - component: {fileID: 2013072589}
   - component: {fileID: 2013072590}
   m_Layer: 0
-  m_Name: Card (4)
+  m_Name: 2_Times
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
