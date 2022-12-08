@@ -8,6 +8,8 @@ namespace mDEV.Manager
 {
     public class GameManager : Singleton<GameManager>
     {
+        private AudioSource source;
+        [SerializeField] private AudioClip cardFlipSFX;
         public delegate void PlayerDeadDel(int index);
 
         public PlayerDeadDel deadDel;
@@ -30,12 +32,15 @@ namespace mDEV.Manager
 
 
 
+
         [field: SerializeField] public Character curPlayingCharacter { get; private set; }
 
         protected override void Awake()
         {
             base.Awake();
             CardResource = Resources.Load<GameObject>("Prefebs/Card");
+            if (cardFlipSFX == null)
+                cardFlipSFX = Resources.Load<AudioClip>("Sound/CardFlipSFX");
         }
 
 
@@ -43,6 +48,7 @@ namespace mDEV.Manager
         {
             Score = MaxScore;
             StartCoroutine(WaitForFuckingStartFuc());
+            source = FindObjectOfType<AudioSource>();
             UpdateScore();
 
         }
@@ -71,7 +77,6 @@ namespace mDEV.Manager
 
         public void ChangeTurnDead()
         {
-            PlayerIndex = PlayerIndex >= Players.Length ? 0 : PlayerIndex;
             curPlayingCharacter = Players[PlayerIndex];
             curPlayingCharacter.StartTurn(recoverMp);
             deadDel(PlayerIndex);
@@ -88,6 +93,16 @@ namespace mDEV.Manager
             UiManager.Instance.scoreText.text = Score.ToString();
         }
 
+        public void MakeCardFlipSound()
+        {
+            MakeSound(cardFlipSFX);
+        }
+
+        public void MakeSound(AudioClip _clip)
+        {
+            source.PlayOneShot(_clip);
+        }
+
         public void UpdateScore()
         {
             UiManager.Instance.scoreText.text = Score.ToString();
@@ -95,7 +110,9 @@ namespace mDEV.Manager
 
         public void RemoveCharacter(Character target)
         {
+
             Players = Players.Remove(target);
+            PlayerIndex = PlayerIndex >= Players.Length ? 0 : PlayerIndex;
             if (Players.Length == 1)
             {
                 GameEnd(Players[0]);
@@ -117,10 +134,7 @@ namespace mDEV.Manager
         {
             for (int i = 0; i < Players.Length; i++)
             {
-                if (Players[i].GetComponent<AI>())
-                {
-                    Players[i].StopAllCoroutines();
-                }
+                Players[i].GetComponent<AI>().StopEveryCoroutines();
             }
             UiManager.Instance.Defeated();
         }

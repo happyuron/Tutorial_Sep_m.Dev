@@ -25,6 +25,7 @@ namespace mDEV.Cards
 
         public virtual bool Effect()
         {
+            GameManager.Instance.MakeCardFlipSound();
             if (cardInfo.cost <= GameManager.Instance.curPlayingCharacter.CurMp && canUse)
             {
                 GameManager.Instance.curPlayingCharacter.SetLastCard(this);

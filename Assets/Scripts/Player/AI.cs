@@ -101,6 +101,7 @@ namespace mDEV.Characters
         public override void Dead()
         {
             base.Dead();
+            EndTurn();
             StopAllCoroutines();
         }
 
@@ -145,7 +146,10 @@ namespace mDEV.Characters
                 return 0;
         }
 
-
+        public void StopEveryCoroutines()
+        {
+            StopAllCoroutines();
+        }
 
     }
 }
